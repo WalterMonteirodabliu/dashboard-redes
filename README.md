@@ -1,8 +1,8 @@
-\# 🚀 Dashboard e IPS de Tráfego de Servidor em Tempo Real
+# 🚀 Dashboard e IPS de Tráfego de Servidor em Tempo Real
 
 
 
-\## 🌿 Descrição do Projeto
+## 🌿 Descrição do Projeto
 
 
 
@@ -14,41 +14,82 @@ O sistema é dividido em duas partes principais:
 
 
 
-\### ⚙️ Backend (Python com FastAPI)
+### ⚙️ Backend (Python com FastAPI)
 
 
 
-\- Captura e analisa pacotes de rede em tempo real usando scapy.  
+- Captura e analisa pacotes de rede em tempo real usando scapy.  
 
-\- Agrega dados de tráfego em janelas de 5 segundos, incluindo volume de entrada/saída, IPs de clientes e distribuição por protocolo.  
+- Agrega dados de tráfego em janelas de 5 segundos, incluindo volume de entrada/saída, IPs de clientes e distribuição por protocolo.  
 
-\- Implementa um motor IPS para detectar:
+- Implementa um motor IPS para detectar:
 
-&nbsp; - \*\*Scans de portas\*\* (TCP Null Scan, TCP FIN Scan, Port Scan).  
+  - **Scans de portas** (TCP Null Scan, TCP FIN Scan, Port Scan).  
 
-&nbsp; - \*\*Ataques baseados em assinatura\*\* (SQL Injection, Path Traversal, XSS).  
+  - **Ataques baseados em assinatura** (SQL Injection, Path Traversal, XSS).  
 
-\- Bloqueia IPs detectados como maliciosos usando iptables por um período configurável.  
+- Bloqueia IPs detectados como maliciosos usando iptables por um período configurável.  
 
-\- Fornece dados de tráfego e alertas de segurança em tempo real via \*\*WebSockets\*\* para o frontend.  
-
-
-
-\### 💻 Frontend (React.js com ECharts)
+- Fornece dados de tráfego e alertas de segurança em tempo real via **WebSockets** para o frontend.  
 
 
 
-\- Conecta-se ao backend via WebSocket para receber atualizações em tempo real.  
+### 💻 Frontend (React.js com ECharts)
 
-\- Exibe gráficos interativos de tráfego de rede, mostrando:
 
-&nbsp; - Tráfego de entrada e saída por cliente.  
 
-&nbsp; - Distribuição de tráfego por protocolo para clientes selecionados.  
+- Conecta-se ao backend via WebSocket para receber atualizações em tempo real.  
 
-\- Apresenta um \*\*Log de Segurança\*\* em tempo real com os alertas detectados pelo IPS, incluindo timestamp, IP, razão e ação tomada (BLOQUEADO).  
+- Exibe gráficos interativos de tráfego de rede, mostrando:
 
-\- Interface responsiva e intuitiva para monitoramento contínuo.  
+  - Tráfego de entrada e saída por cliente.  
+
+  - Distribuição de tráfego por protocolo para clientes selecionados.  
+
+- Apresenta um **Log de Segurança** em tempo real com os alertas detectados pelo IPS, incluindo timestamp, IP, razão e ação tomada (BLOQUEADO).  
+
+- Interface responsiva e intuitiva para monitoramento contínuo.  
+
+---
+
+## ⚡ Funcionalidades Principais
+
+| Funcionalidade                | Descrição                                                                                                  |
+|------------------------------|------------------------------------------------------------------------------------------------------------|
+| **Monitoramento de Tráfego** | Visualização em tempo real do volume de dados de entrada e saída, por cliente e por protocolo.            |
+| **Detecção de Intrusões**    | Identificação de scans de portas e ataques comuns (SQL Injection, XSS, Path Traversal) via assinaturas.   |
+| **Bloqueio Automático de IP**| Bloqueio dinâmico de IPs maliciosos usando iptables para mitigar ameaças.                                 |
+| **Alertas em Tempo Real**    | Notificações instantâneas de segurança exibidas no dashboard.                                             |
+| **Interface Interativa**     | Dashboard web construído com React.js e ECharts para visualização de dados e alertas.                     |
+
+
+---
+
+
+
+## 🧩 Pré-requisitos
+
+
+
+### Backend
+
+
+
+- Python 3.10 ou superior  
+
+- Permissões de administrador/root para captura de pacotes (necessário para scapy e iptables)  
+
+- Variável de ambiente `SERVER_IP` configurada com o IP do servidor a ser monitorado.  
+
+
+
+### Frontend
+
+
+
+- Node.js (versão recomendada: 18.x ou superior)  
+
+- npm ou yarn  
 
 
 
@@ -56,83 +97,29 @@ O sistema é dividido em duas partes principais:
 
 
 
-\## ⚡ Funcionalidades Principais
+## 🛠️ Instalação e Execução
 
 
 
-| Funcionalidade | Descrição |
-
-| :----------------------- | :---------------------------------------------------------------------------------------------------------- |
-
-| \*\*Monitoramento de Tráfego\*\* | Visualização em tempo real do volume de dados de entrada e saída, por cliente e por protocolo. |
-
-| \*\*Detecção de Intrusões\*\* | Identificação de scans de portas e ataques comuns (SQL Injection, XSS, Path Traversal) via assinaturas. |
-
-| \*\*Bloqueio Automático de IP\*\* | Bloqueio dinâmico de IPs maliciosos usando iptables para mitigar ameaças. |
-
-| \*\*Alertas em Tempo Real\*\* | Notificações instantâneas de segurança exibidas no dashboard. |
-
-| \*\*Interface Interativa\*\* | Dashboard web construído com React.js e ECharts para visualização de dados e alertas. |
-
-
-
----
-
-
-
-\## 🧩 Pré-requisitos
-
-
-
-\### Backend
-
-
-
-\- Python 3.10 ou superior  
-
-\- Permissões de administrador/root para captura de pacotes (necessário para scapy e iptables)  
-
-\- Variável de ambiente `SERVER\_IP` configurada com o IP do servidor a ser monitorado.  
-
-
-
-\### Frontend
-
-
-
-\- Node.js (versão recomendada: 18.x ou superior)  
-
-\- npm ou yarn  
-
-
-
----
-
-
-
-\## 🛠️ Instalação e Execução
-
-
-
-\### 1. Clonar o Repositório
+### 1. Clonar o Repositório
 
 
 
 ```bash
 
-git clone <URL\_DO\_REPOSITORIO>
+git clone <URL_DO_REPOSITORIO>
 
-cd <NOME\_DO\_REPOSITORIO>
+cd <NOME_DO_REPOSITORIO>
 
 ```
 
 
 
-\### 2. Configuração do Backend
+### 2. Configuração do Backend
 
 
 
-\#### Variáveis de Ambiente
+#### Variáveis de Ambiente
 
 
 
@@ -142,17 +129,17 @@ Crie um arquivo `.env` na raiz do diretório backend com o seguinte conteúdo:
 
 ```env
 
-SERVER\_IP="<SEU\_IP\_DO\_SERVIDOR>"
+SERVER\_IP="<SEU_IP_DO_SERVIDOR>"
 
 ```
 
 
 
-Substitua `<SEU\_IP\_DO\_SERVIDOR>` pelo endereço IP da interface de rede que você deseja monitorar.
+Substitua `<SEU_IP_DO_SERVIDOR>` pelo endereço IP da interface de rede que você deseja monitorar.
 
 
 
-\#### Instalação das Dependências
+#### Instalação das Dependências
 
 
 
@@ -170,7 +157,7 @@ pip install -r requirements.txt
 
 
 
-\#### Execução
+#### Execução
 
 
 
@@ -198,11 +185,11 @@ sudo gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app -b 0.0.0.0:8000
 
 
 
-\### 3. Configuração do Frontend
+### 3. Configuração do Frontend
 
 
 
-\#### Instalação das Dependências
+#### Instalação das Dependências
 
 
 
@@ -212,7 +199,7 @@ cd frontend
 
 npm install
 
-\# ou
+# ou
 
 yarn install
 
@@ -220,7 +207,7 @@ yarn install
 
 
 
-\#### Execução
+#### Execução
 
 
 
@@ -228,7 +215,7 @@ yarn install
 
 npm start
 
-\# ou
+# ou
 
 yarn start
 
@@ -236,7 +223,7 @@ yarn start
 
 
 
-O frontend será iniciado em \[http://localhost:3000](http://localhost:3000).
+O frontend será iniciado em [http://localhost:3000](http://localhost:3000).
 
 
 
@@ -244,7 +231,7 @@ O frontend será iniciado em \[http://localhost:3000](http://localhost:3000).
 
 
 
-\## 🗂️ Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
 
 
 
@@ -256,15 +243,15 @@ O frontend será iniciado em \[http://localhost:3000](http://localhost:3000).
 
 │   ├── app/
 
-│   │   ├── \_\_init\_\_.py
+│   │   ├── __init__.py
 
 │   │   ├── app.py             # Aplicação FastAPI principal, WebSockets, inicialização do sniffer
 
 │   │   ├── sniffer.py         # Lógica de captura e processamento de pacotes com Scapy
 
-│   │   ├── ips\_engine.py      # Motor de detecção de intrusões (scans, assinaturas)
+│   │   ├── ips_engine.py      # Motor de detecção de intrusões (scans, assinaturas)
 
-│   │   ├── response\_actions.py # Funções para bloquear IPs e gerenciar alertas
+│   │   ├── response_actions.py # Funções para bloquear IPs e gerenciar alertas
 
 │   │   └── aggregator.py      # Agregação de dados de tráfego em janelas de tempo
 
@@ -290,7 +277,7 @@ O frontend será iniciado em \[http://localhost:3000](http://localhost:3000).
 
 │   └── README.md            # (Este arquivo)
 
-└── README\_novo.md           # O novo README gerado
+└── README_novo.md           # O novo README gerado
 
 ```
 
@@ -300,23 +287,19 @@ O frontend será iniciado em \[http://localhost:3000](http://localhost:3000).
 
 
 
-\## 🧠 Tecnologias Utilizadas
+## 🧠 Tecnologias Utilizadas
 
 
-
-\- \*\*Backend\*\*: Python, FastAPI, Scapy, Uvicorn, python-dotenv  
-
-\- \*\*Frontend\*\*: React.js, ECharts, WebSockets  
-
-\- \*\*Segurança\*\*: iptables  
-
+- **Backend** : Python, FastAPI, Scapy, Uvicorn, python-dotenv  
+- **Frontend** : React.js, ECharts, WebSockets  
+- **Segurança** : iptables  
 
 
 ---
 
 
 
-\## 🤝 Contribuição
+## 🤝 Contribuição
 
 
 
