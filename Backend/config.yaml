@@ -1,0 +1,60 @@
+# ==============================================================================
+# Parâmetros da Missão — Sistema de Detecção e Prevenção de Intrusão (IPS)
+# Projeto Apollo - Centro de Controle
+#
+# Este arquivo define as configurações operacionais utilizadas pelo motor IPS,
+# incluindo limiares de detecção, janelas temporais, integração com listas de
+# inteligência de ameaças e assinaturas de ataque baseadas em padrões (regex).
+#
+# Todas as regras e valores aqui definidos são carregados no momento da
+# inicialização do backend e aplicados pelo módulo `ips_engine.py`.
+# ==============================================================================
+
+
+# ------------------------------------------------------------------------------
+# Configurações de detecção de varreduras de porta (Port Scan)
+# ------------------------------------------------------------------------------
+# Define o número máximo de tentativas de conexão a portas diferentes
+# dentro de uma janela de tempo específica. Se o limite for excedido,
+# o comportamento é classificado como potencial varredura de rede.
+# ------------------------------------------------------------------------------
+port_scan_threshold: 20        # Número máximo de portas escaneadas
+scan_time_window: 10           # Janela de tempo (em segundos) para contagem
+
+
+# ------------------------------------------------------------------------------
+# Inteligência de Ameaças (Threat Intelligence)
+# ------------------------------------------------------------------------------
+# URL para download de listas de IPs maliciosos (Threat Feeds),
+# utilizadas para bloquear conexões provenientes de fontes suspeitas.
+# ------------------------------------------------------------------------------
+threat_intelligence_url: "https://feodotracker.abuse.ch/downloads/ipblocklist.txt"
+
+
+# ------------------------------------------------------------------------------
+# Regras de Assinatura (Signature-based Detection)
+# ------------------------------------------------------------------------------
+# Cada regra representa um padrão de ataque conhecido (expressão regular)
+# que o IPS monitora nas requisições de rede. Caso o padrão seja detectado,
+# um alerta é gerado com o nível de severidade correspondente.
+# ------------------------------------------------------------------------------
+signature_rules:
+  - name: "SQL Injection Attempt"
+    pattern: "(\\%27)|(\\')|(\\-\\-)|(\\%23)|(#)"
+    severity: "HIGH"
+
+  - name: "Cross-Site Scripting (XSS)"
+    pattern: "(<script>|alert\\(|onerror=)"
+    severity: "HIGH"
+
+  - name: "Path Traversal"
+    pattern: "(\\.\\./)|(\\.\\.\\\\)"
+    severity: "MEDIUM"
+
+  - name: "Shell Command Injection"
+    pattern: "(;|\\|||\\$\\(|\\{|<\\[)"
+    severity: "HIGH"
+
+  - name: "Nmap User-Agent"
+    pattern: "Nmap Scripting Engine"
+    severity: "LOW"
