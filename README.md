@@ -307,5 +307,3 @@ Contribuições são bem-vindas!
 
 Sinta-se à vontade para abrir issues ou pull requests para melhorias, correção de bugs ou novas funcionalidades.
 
-
-
