@@ -6,7 +6,7 @@
 
 
 
-Este projeto implementa um \*\*Dashboard de Tráfego de Servidor em Tempo Real\*\* com funcionalidades de \*\*Sistema de Prevenção de Intrusões (IPS)\*\*. Ele monitora o tráfego de rede de um servidor específico, detecta atividades suspeitas e bloqueia IPs maliciosos, enquanto visualiza os dados de tráfego e alertas de segurança em uma interface web interativa.
+Este projeto implementa um **Dashboard de Tráfego de Servidor em Tempo Real** com funcionalidades de **Sistema de Prevenção de Intrusões (IPS)**. Ele monitora o tráfego de rede de um servidor específico, detecta atividades suspeitas e bloqueia IPs maliciosos, enquanto visualiza os dados de tráfego e alertas de segurança em uma interface web interativa.
 
 
 
