@@ -231,62 +231,6 @@ O frontend será iniciado em [http://localhost:3000](http://localhost:3000).
 
 
 
-## 🗂️ Estrutura do Projeto
-
-
-
-```
-
-. (raiz do projeto)
-
-├── backend/
-
-│   ├── app/
-
-│   │   ├── __init__.py
-
-│   │   ├── app.py             # Aplicação FastAPI principal, WebSockets, inicialização do sniffer
-
-│   │   ├── sniffer.py         # Lógica de captura e processamento de pacotes com Scapy
-
-│   │   ├── ips_engine.py      # Motor de detecção de intrusões (scans, assinaturas)
-
-│   │   ├── response_actions.py # Funções para bloquear IPs e gerenciar alertas
-
-│   │   └── aggregator.py      # Agregação de dados de tráfego em janelas de tempo
-
-│   ├── .env                 # Variáveis de ambiente (SERVER\_IP)
-
-│   └── requirements.txt     # Dependências Python
-
-├── frontend/
-
-│   ├── public/
-
-│   │   └── index.html         # Arquivo HTML principal
-
-│   ├── src/
-
-│   │   ├── App.js             # Componente principal do React, lógica do WebSocket, gráficos ECharts
-
-│   │   ├── App.css            # Estilos CSS para o dashboard
-
-│   │   └── index.js           # Ponto de entrada do React
-
-│   ├── package.json         # Dependências e scripts do Frontend
-
-│   └── README.md            # (Este arquivo)
-
-└── README_novo.md           # O novo README gerado
-
-```
-
-
-
----
-
-
-
 ## 🧠 Tecnologias Utilizadas
 
 
